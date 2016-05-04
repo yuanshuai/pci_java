@@ -4,11 +4,14 @@ import com.alibaba.fastjson.JSONObject;
 import com.frey.pci.chapter2.sim.DistanceSimilarity;
 import com.frey.pci.chapter2.sim.PearsonSimilarity;
 import com.frey.pci.chapter2.sim.Similarity;
+import com.frey.pci.commons.Tuple;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Main
@@ -42,7 +45,13 @@ public class Main {
 
   }
 
-
+  /**
+   * 为用户 person 推荐物品
+   * @param prefs
+   * @param person
+   * @param similarity
+   * @return
+   */
   public static List<Tuple<String,Double>> getRecommandations(JSONObject prefs, String person, Similarity similarity) {
 
     Map<String, Double> scoreSumMap = Maps.newHashMap();
@@ -128,22 +137,6 @@ public class Main {
   }
 }
 
-class Tuple<A, B> {
-  public final A _1;
-  public final B _2;
 
-  public Tuple(A a, B b) {
-    this._1 = a;
-    this._2 = b;
-  }
-}
 
-class Tuple3<A, B, C> extends Tuple<A, B>{
-  public final C _3;
-
-  public Tuple3(A a, B b, C c) {
-    super(a, b);
-    this._3 = c;
-  }
-}
 
